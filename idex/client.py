@@ -514,7 +514,7 @@ class Client(BaseClient):
 
         return self._post('returnOrderBook', False, json=data)
 
-    def get_open_orders(self, market, address):
+    def get_open_orders(self, market, address, count):
         """Get the open orders for a given market and address
 
         Output is similar to the output for get_order_book() except that orders are not sorted by type or price, but are rather displayed in the order of insertion. As is the case with get_order_book( there is a params property of the response value that contains details on the order which can help with verifying its authenticity.
@@ -587,7 +587,8 @@ class Client(BaseClient):
 
         data = {
             'market': market,
-            'address': address
+            'address': address,
+            'count': count
         }
 
         return self._post('returnOpenOrders', False, json=data)
